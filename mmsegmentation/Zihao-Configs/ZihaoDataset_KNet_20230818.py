@@ -64,7 +64,7 @@ model = dict(
         loss_decode=dict(
             loss_weight=0.4, type='CrossEntropyLoss', use_sigmoid=False),
         norm_cfg=dict(requires_grad=True, type='SyncBN'),
-        num_classes=6,
+        num_classes=2,
         num_convs=1,
         type='FCNHead'),
     backbone=dict(
@@ -136,7 +136,7 @@ model = dict(
             loss_decode=dict(
                 loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=False),
             norm_cfg=dict(requires_grad=True, type='SyncBN'),
-            num_classes=6,
+            num_classes=2,
             pool_scales=(
                 1,
                 2,
@@ -287,7 +287,7 @@ test_pipeline = [
 ]
 train_cfg = dict(max_iters=20000, type='IterBasedTrainLoop', val_interval=500)
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     dataset=dict(
         data_prefix=dict(
             img_path='img_dir/train', seg_map_path='ann_dir/train'),

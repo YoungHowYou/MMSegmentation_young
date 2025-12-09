@@ -62,7 +62,7 @@ model = dict(
         loss_decode=dict(
             loss_weight=0.4, type='CrossEntropyLoss', use_sigmoid=False),
         norm_cfg=dict(requires_grad=True, type='BN'),
-        num_classes=6,
+        num_classes=2,
         num_convs=1,
         type='FCNHead'),
     backbone=dict(
@@ -119,7 +119,7 @@ model = dict(
         loss_decode=dict(
             loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=False),
         norm_cfg=dict(requires_grad=True, type='BN'),
-        num_classes=6,
+        num_classes=2,
         pool_scales=(
             1,
             2,
@@ -157,8 +157,8 @@ test_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                2048,
-                1024,
+                1000,
+                1000,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
@@ -176,15 +176,15 @@ test_evaluator = dict(
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(keep_ratio=True, scale=(
-        2048,
-        1024,
+        1000,
+        1000,
     ), type='Resize'),
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs'),
 ]
-train_cfg = dict(max_iters=40000, type='IterBasedTrainLoop', val_interval=500)
+train_cfg = dict(max_iters=10000, type='IterBasedTrainLoop', val_interval=500)
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     dataset=dict(
         data_prefix=dict(
             img_path='img_dir/train', seg_map_path='ann_dir/train'),
@@ -199,8 +199,8 @@ train_dataloader = dict(
                     2.0,
                 ),
                 scale=(
-                    2048,
-                    1024,
+                    1000,
+                    1000,
                 ),
                 type='RandomResize'),
             dict(
@@ -226,8 +226,8 @@ train_pipeline = [
             2.0,
         ),
         scale=(
-            2048,
-            1024,
+            1000,
+            1000,
         ),
         type='RandomResize'),
     dict(cat_max_ratio=0.75, crop_size=(
@@ -273,8 +273,8 @@ val_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                2048,
-                1024,
+                1000,
+                1000,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
