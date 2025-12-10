@@ -6,7 +6,7 @@ dataset_type = 'ZihaoDataset' # 数据集类名
 data_root = 'Watermelon87_Semantic_Seg_Mask/' # 数据集路径（相对于mmsegmentation主目录）
 
 # 输入模型的图像裁剪尺寸，一般是 128 的倍数，越小显存开销越少
-crop_size = (512, 512)
+crop_size = (256, 256)
 
 # 训练预处理数据增广
 train_pipeline = [

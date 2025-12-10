@@ -1,8 +1,8 @@
 checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_large_patch4_window7_224_22k_20220308-d5bdebaf.pth'
 conv_kernel_size = 1
 crop_size = (
-    512,
-    512,
+    256,
+    256,
 )
 data_preprocessor = dict(
     bgr_to_rgb=True,
@@ -107,8 +107,8 @@ model = dict(
         pad_val=0,
         seg_pad_val=255,
         size=(
-            512,
-            512,
+            256,
+            256,
         ),
         std=[
             58.395,
@@ -260,8 +260,8 @@ test_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                2048,
-                1024,
+                1000,
+                1000,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
@@ -279,8 +279,8 @@ test_evaluator = dict(
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(keep_ratio=True, scale=(
-        2048,
-        1024,
+        1000,
+        1000,
     ), type='Resize'),
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs'),
@@ -302,14 +302,14 @@ train_dataloader = dict(
                     2.0,
                 ),
                 scale=(
-                    2048,
-                    1024,
+                    1000,
+                    1000,
                 ),
                 type='RandomResize'),
             dict(
                 cat_max_ratio=0.75, crop_size=(
-                    512,
-                    512,
+                    256,
+                    256,
                 ), type='RandomCrop'),
             dict(prob=0.5, type='RandomFlip'),
             dict(type='PhotoMetricDistortion'),
@@ -329,13 +329,13 @@ train_pipeline = [
             2.0,
         ),
         scale=(
-            2048,
-            1024,
+            1000,
+            1000,
         ),
         type='RandomResize'),
     dict(cat_max_ratio=0.75, crop_size=(
-        512,
-        512,
+        256,
+        256,
     ), type='RandomCrop'),
     dict(prob=0.5, type='RandomFlip'),
     dict(type='PhotoMetricDistortion'),
@@ -376,8 +376,8 @@ val_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                2048,
-                1024,
+                1000,
+                1000,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
