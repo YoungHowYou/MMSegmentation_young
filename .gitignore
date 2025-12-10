@@ -118,7 +118,8 @@ mmseg/.mim
 
 # Pytorch
 *.pth
-
+*.bin
+*.onnx
 # Images
 *.jpg
 *.png

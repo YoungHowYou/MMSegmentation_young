@@ -1,0 +1,16 @@
+{
+    "version": "1.3.1",
+    "task": "Segmentor",
+    "models": [
+        {
+            "name": "iterativedecode",
+            "net": "end2end.xml",
+            "weights": "end2end.bin",
+            "backend": "openvino",
+            "precision": "FP32",
+            "batch_size": 1,
+            "dynamic_shape": false
+        }
+    ],
+    "customs": []
+}

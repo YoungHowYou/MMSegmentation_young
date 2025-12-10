@@ -1,0 +1,49 @@
+{
+    "version": "1.3.1",
+    "codebase": {
+        "task": "Segmentation",
+        "codebase": "mmseg",
+        "version": "1.2.2",
+        "pth": "../mmsegmentation/checkpoint/best.pth",
+        "config": "../mmsegmentation/Zihao-Configs/ZihaoDataset_KNet_20230818.py"
+    },
+    "codebase_config": {
+        "type": "mmseg",
+        "task": "Segmentation",
+        "with_argmax": true
+    },
+    "onnx_config": {
+        "type": "onnx",
+        "export_params": true,
+        "keep_initializers_as_inputs": false,
+        "opset_version": 13,
+        "save_file": "end2end.onnx",
+        "input_names": [
+            "input"
+        ],
+        "output_names": [
+            "output"
+        ],
+        "input_shape": [
+            256,
+            256
+        ],
+        "optimize": true
+    },
+    "backend_config": {
+        "type": "openvino",
+        "model_inputs": [
+            {
+                "opt_shapes": {
+                    "input": [
+                        1,
+                        3,
+                        256,
+                        256
+                    ]
+                }
+            }
+        ]
+    },
+    "calib_config": {}
+}
