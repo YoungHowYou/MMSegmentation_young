@@ -260,14 +260,14 @@ test_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                1000,
-                1000,
+                256,
+                256,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
         ],
         type='ZihaoDataset'),
-    num_workers=4,
+    num_workers=2,
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 test_evaluator = dict(
@@ -279,8 +279,8 @@ test_evaluator = dict(
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(keep_ratio=True, scale=(
-        1000,
-        1000,
+        256,
+        256,
     ), type='Resize'),
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs'),
@@ -302,8 +302,8 @@ train_dataloader = dict(
                     2.0,
                 ),
                 scale=(
-                    1000,
-                    1000,
+                    256,
+                    256,
                 ),
                 type='RandomResize'),
             dict(
@@ -329,8 +329,8 @@ train_pipeline = [
             2.0,
         ),
         scale=(
-            1000,
-            1000,
+            256,
+            256,
         ),
         type='RandomResize'),
     dict(cat_max_ratio=0.75, crop_size=(
@@ -376,14 +376,14 @@ val_dataloader = dict(
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(keep_ratio=True, scale=(
-                1000,
-                1000,
+                256,
+                256,
             ), type='Resize'),
             dict(type='LoadAnnotations'),
             dict(type='PackSegInputs'),
         ],
         type='ZihaoDataset'),
-    num_workers=4,
+    num_workers=2,
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler'))
 val_evaluator = dict(

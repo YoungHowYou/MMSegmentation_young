@@ -14,7 +14,7 @@ train_pipeline = [
     dict(type='LoadAnnotations'),
     dict(
         type='RandomResize',
-        scale=(1000, 1000),
+        scale=(256, 256),
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
@@ -26,7 +26,7 @@ train_pipeline = [
 # 测试预处理
 test_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(1000, 1000), keep_ratio=True),
+    dict(type='Resize', scale=(256, 256), keep_ratio=True),
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs')
 ]
@@ -65,7 +65,7 @@ train_dataloader = dict(
 # 验证 Dataloader
 val_dataloader = dict(
     batch_size=1,
-    num_workers=4,
+    num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
